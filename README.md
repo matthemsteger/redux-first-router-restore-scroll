@@ -74,7 +74,7 @@ const stateStorage = {
     return someStorageMechanism.get(determineKeyFromLocation(location, key))
   },
   save(location, key, value) {
-    // somewhere you will stored state
+    // somewhere you will store state
     someStorageMechanism.set(determineKeyFromLocation(location, key), value)
   }
 }
