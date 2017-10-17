@@ -57,7 +57,7 @@ connectRoutes(history, routesMap, {
 })
 ```
 
-To implement a custom backend storage for scroll state, pass a custom `stateStorage` object. The object should implement the methods as described by [scroll-behavior](https://github.com/taion/scroll-behavior).
+To implement a custom backend storage for scroll state, pass a custom `stateStorage` object. The object should implement the methods as described by [scroll-behavior](https://github.com/taion/scroll-behavior) as well as a function called `setPrevKey` that keeps track of the previous key. See the default [sessionStorage backed example](https://github.com/faceyspacey/redux-first-router-restore-scroll/blob/master/src/SessionStorage.js).
 
 ```js
 import restoreScroll from 'redux-first-router-restore-scroll'
@@ -68,7 +68,11 @@ function determineKeyFromLocation(location, key) {
   return `${location.key || location.hash || 'loadPage'}${key}`
 }
 
+let prevKey;
 const stateStorage = {
+  setPrevKey(key) {
+    prevKey = key;
+  },
   read(location, key) {
     // somewhere you have stored state
     return someStorageMechanism.get(determineKeyFromLocation(location, key))

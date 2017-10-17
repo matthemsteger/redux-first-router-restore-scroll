@@ -1,5 +1,5 @@
 {
-  "name": "redux-first-router-restore-scroll",
+  "name": "@matthemsteger/redux-first-router-restore-scroll",
   "version": "0.0.0-development",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
